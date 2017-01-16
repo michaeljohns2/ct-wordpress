@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+
+  wordpress:
+    image: wordpress
+    volumes:
+       - ./wpdata:/var/www/html
+    ports:
+      - ${WP_PORT}:80
+    environment:
+      WORDPRESS_DB_PASSWORD: ${DB_PWD}
+
+  mysql:
+    image: mariadb
+    volumes:
+      - ./mdbdata:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PWD}
